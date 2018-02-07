@@ -1,0 +1,42 @@
+/*
+ *  Program:    Exercise 14.7
+ *  Date:       2/4/18
+ *  Developer:  Garrett Wolfe
+ *  Purpose:    Write a program that displays a 10-by-10 square matrix. Each element
+                in the matrix is 0 or 1, randomly generated. Display each number 
+                centered in a text field.
+ */
+package exercise14_7;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+
+public class Exercise14_7 extends Application{
+    private static int HEIGHT = 350;
+    private static int WIDTH = 350;
+    public void start(Stage primaryStage) {
+        GridPane matrix = new GridPane();
+        for (int i = 0; i < 10; i++) {
+            for (int x = 0; x < 10; x++) {
+                TextField text = new TextField(Integer.toString((int)(Math.random() * 2)));
+                text.setMinWidth(WIDTH / 10);
+                text.setMaxWidth(WIDTH / 10);
+                text.setMinHeight(HEIGHT / 10);
+                text.setMaxHeight(HEIGHT / 10);
+                matrix.add(text, x, i);
+            }
+        }
+        Scene scene = new Scene(matrix, WIDTH, HEIGHT);
+        primaryStage.setScene(scene);
+        primaryStage.setMinWidth(WIDTH);
+        primaryStage.setMinHeight(HEIGHT);
+        primaryStage.setTitle("Exercise 14_7");
+        primaryStage.show();
+    }
+    public static void main(String[] args) {
+        Application.launch(args);
+    }   
+}
